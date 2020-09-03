@@ -22,7 +22,7 @@ jobs:
           TGT: ${{ github.event.target_commitish }}
       run: |
           echo "$TEST2"
-          git log --pretty=oneline --abbrev-commit --decorate | sed -n 1p
+          git log --pretty=%d --decorate | sed -n 1p | awk '{print substr($3, 1, length($3)-1)}'
           echo "github.event.author: $AUTHOR"
           echo "github.event.target_commitish: $TGT"
           echo "github.ref: ${{ github.ref }}"
