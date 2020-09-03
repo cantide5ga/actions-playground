@@ -18,11 +18,11 @@ jobs:
           git fetch
     - name: get branch name?
       env:
-          TEST1: ${{ git log --pretty=oneline --abbrev-commit --decorate | sed -n 1p }}
-          TEST2: ${{ github.head_ref }}
           AUTHOR: ${{ github.event.author.login }}
           TGT: ${{ github.event.target_commitish }}
       run: |
+          echo "$TEST2"
+          git log --pretty=oneline --abbrev-commit --decorate | sed -n 1p
           echo "github.event.author: $AUTHOR"
           echo "github.event.target_commitish: $TGT"
           echo "github.ref: ${{ github.ref }}"
